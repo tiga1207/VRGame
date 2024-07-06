@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+
+[System.Serializable ]
+public class DefaultRoom
+{
+    public string Name; // 방이름
+    public int sceneIndex; // 방 인덱스
+    public int maxPlayer; // 최대 플레이어
+
+}
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        ConnectToServer();
-    }
+    public List<DefaultRoom> defaultRooms;
 
-    void ConnectToServer()
+    public GameObject roomUI;
+    public void ConnectToServer()
     {
         PhotonNetwork.ConnectUsingSettings();
         Debug.Log("try connect to server");
@@ -21,13 +27,38 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("Connected to Server.");
         base.OnConnectedToMaster();
+        PhotonNetwork.JoinLobby();
+        // RoomOptions roomOptions = new RoomOptions();
+        // roomOptions.MaxPlayers = 10;
+        // roomOptions.IsVisible = true;
+        // roomOptions.IsOpen = true;
+
+
+        // PhotonNetwork.JoinOrCreateRoom("Room 1", roomOptions,TypedLobby.Default);
+    }
+
+    public override void OnJoinedLobby()
+    {
+        base.OnJoinedLobby();
+        Debug.Log("We joined the lobby");
+        roomUI.SetActive(true);
+    } 
+
+    public void InitiliazeRoom(int defaultRoomInnex) //방(네트워크) 설정
+    {
+        DefaultRoom   roomSettings = defaultRooms[defaultRoomInnex];
+
+        //방 로드
+        PhotonNetwork.LoadLevel(roomSettings.sceneIndex);
+
+        //방생성
         RoomOptions roomOptions = new RoomOptions();
-        roomOptions.MaxPlayers = 10;
+        roomOptions.MaxPlayers = (byte)roomSettings.maxPlayer;
         roomOptions.IsVisible = true;
         roomOptions.IsOpen = true;
 
+        PhotonNetwork.JoinOrCreateRoom(roomSettings.Name, roomOptions,TypedLobby.Default);
 
-        PhotonNetwork.JoinOrCreateRoom("Room 1", roomOptions,TypedLobby.Default);
     }
 
     public override void OnJoinedRoom()
