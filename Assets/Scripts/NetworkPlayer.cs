@@ -37,26 +37,13 @@ public class NetworkPlayer : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(photonView.IsMine)
         {
- 
-            // head.gameObject.SetActive(true);
-            // leftHand.gameObject.SetActive(true);
-            // rightHand.gameObject.SetActive(true);
- 
- 
-            // MapPosition(head,XRNode.Head);
             MapPosition(head,headRig);
-
-            // MapPosition(leftHand,XRNode.LeftHand);
             MapPosition(leftHand,leftHandRig);
-            
-            // MapPosition(rightHand,XRNode.RightHand);
             MapPosition(rightHand,rightHandRig);
-
 
             UpdateHandAnimation(InputDevices.GetDeviceAtXRNode(XRNode.LeftHand),leftHandAnimator);
             UpdateHandAnimation(InputDevices.GetDeviceAtXRNode(XRNode.RightHand),rightHandAnimator);
@@ -90,15 +77,5 @@ public class NetworkPlayer : MonoBehaviour
     {
         target.position = rigTransform.position;
         target.rotation = rigTransform.rotation;
-    }
-
-    // void MapPosition(Transform target, XRNode node)
-    // {
-    //     InputDevices.GetDeviceAtXRNode(node).TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 position);
-    //     InputDevices.GetDeviceAtXRNode(node).TryGetFeatureValue(CommonUsages.deviceRotation, out Quaternion rotation);
-    //     target.position = position;
-    //     target.rotation = rotation;
-    // }
-
-    
+    }    
 }

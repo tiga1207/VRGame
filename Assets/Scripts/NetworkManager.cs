@@ -28,13 +28,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         Debug.Log("Connected to Server.");
         base.OnConnectedToMaster();
         PhotonNetwork.JoinLobby();
-        // RoomOptions roomOptions = new RoomOptions();
-        // roomOptions.MaxPlayers = 10;
-        // roomOptions.IsVisible = true;
-        // roomOptions.IsOpen = true;
-
-
-        // PhotonNetwork.JoinOrCreateRoom("Room 1", roomOptions,TypedLobby.Default);
     }
 
     public override void OnJoinedLobby()
