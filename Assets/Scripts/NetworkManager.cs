@@ -39,7 +39,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public void InitiliazeRoom(int defaultRoomInnex) //방(네트워크) 설정
     {
-        DefaultRoom   roomSettings = defaultRooms[defaultRoomInnex];
+        DefaultRoom roomSettings = defaultRooms[defaultRoomInnex];
 
         //방 로드
         PhotonNetwork.LoadLevel(roomSettings.sceneIndex);
@@ -60,7 +60,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         base.OnJoinedRoom();
     }
 
-    public override void OnPlayerEnteredRoom(Player newPlayer)
+    public override void OnPlayerEnteredRoom(Player newPlayer)//플레이어 입장시
     {
         Debug.Log("A new player entered room");
         base.OnPlayerEnteredRoom(newPlayer);

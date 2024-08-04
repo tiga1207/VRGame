@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Lobby.unity
     guid: e4d8f89d05566469b942a0735502b7df
   - enabled: 1
-    path: Assets/Scenes/1.unity
+    path: Assets/Scenes/Bowling.unity
     guid: 3393b65783029b14f9b29b3b0334970c
   - enabled: 1
-    path: Assets/Scenes/2.unity
+    path: Assets/Scenes/FitnessRoom.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 0863a205917d38e4da1cc3254e907214, type: 2}
