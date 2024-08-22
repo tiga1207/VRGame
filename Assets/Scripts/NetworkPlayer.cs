@@ -27,14 +27,14 @@ public class NetworkPlayer : MonoBehaviour
         leftHandRig=xROrigin.transform.Find("Camera Offset/Left Controller");
         rightHandRig=xROrigin.transform.Find("Camera Offset/Right Controller");
 
-        if(photonView.IsMine)
-        {
-            foreach(var item in GetComponentsInChildren<Renderer>())
-            {
-                item.enabled=false;
-            }
+        // if(photonView.IsMine)
+        // {
+        //     foreach(var item in GetComponentsInChildren<Renderer>())
+        //     {
+        //         item.enabled=false;
+        //     }
 
-        }
+        // }
     }
 
     void Update()

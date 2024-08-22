@@ -20,12 +20,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void ConnectToServer()
     {
         PhotonNetwork.ConnectUsingSettings();
-        Debug.Log("try connect to server");
     }
 
     public override void OnConnectedToMaster()
     {
-        Debug.Log("Connected to Server.");
         base.OnConnectedToMaster();
         PhotonNetwork.JoinLobby();
     }
@@ -33,7 +31,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         base.OnJoinedLobby();
-        Debug.Log("We joined the lobby");
         roomUI.SetActive(true);
     } 
 
