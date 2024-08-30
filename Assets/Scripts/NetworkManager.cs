@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-[System.Serializable ]
+[System.Serializable]
 public class DefaultRoom
 {
     public string Name; // 방이름
@@ -14,12 +14,28 @@ public class DefaultRoom
 }
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
+    public static NetworkManager Instance;
     public List<DefaultRoom> defaultRooms;
 
-    public GameObject roomUI;
+    // public GameObject roomUI;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     public void ConnectToServer()
     {
         PhotonNetwork.ConnectUsingSettings();
+        Debug.Log("connect to server is sucessfully done");
     }
 
     public override void OnConnectedToMaster()
@@ -31,11 +47,14 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         base.OnJoinedLobby();
-        roomUI.SetActive(true);
+        // roomUI.SetActive(true);
     } 
 
     public void InitiliazeRoom(int defaultRoomInnex) //방(네트워크) 설정
     {
+        // if (PhotonNetwork.IsConnectedAndReady && PhotonNetwork.InLobby)
+        // {
+        // }
         DefaultRoom roomSettings = defaultRooms[defaultRoomInnex];
 
         //방 로드
@@ -48,6 +67,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         roomOptions.IsOpen = true;
 
         PhotonNetwork.JoinOrCreateRoom(roomSettings.Name, roomOptions,TypedLobby.Default);
+        
 
     }
 

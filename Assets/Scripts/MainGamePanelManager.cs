@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Photon.Pun;
 public class MainGamePanelManager : MonoBehaviour
 {
 
@@ -15,6 +16,9 @@ public class MainGamePanelManager : MonoBehaviour
     public GameObject lockerRoomPanel;
     public GameObject loginPanel;
     public GameObject indivisualRoutinePanel;
+    // public GameObject XrOrign;
+    // public GameObject oneCamera;
+    public NetworkManager networkManager;
 
     void Start()
     {
@@ -54,10 +58,18 @@ public class MainGamePanelManager : MonoBehaviour
     public void SinglePlay()
     {
         mainGamePanel.SetActive(false);
+        // oneCamera.SetActive(false);
+        // XrOrign.SetActive(true);
+        
     }
     public void MultiPlay()
     {
         mainGamePanel.SetActive(false);
+        // oneCamera.SetActive(false);        
+        networkManager.InitiliazeRoom(0);
+        // PhotonNetwork.LoadLevel(0);
+        // XrOrign.SetActive(true);
+
     }
     public void CheckmyRoutine()
     {

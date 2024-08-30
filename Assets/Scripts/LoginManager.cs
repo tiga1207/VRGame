@@ -13,6 +13,7 @@ public class LoginManager : MonoBehaviour
     public GameObject LoginPanel;
     public GameObject signUpPanel;
     public GameObject MainGamePanel;
+    public NetworkManager networkManager;
 
     void Start()
     {
@@ -32,6 +33,8 @@ public class LoginManager : MonoBehaviour
         {
             LoginPanel.SetActive(false);
             MainGamePanel.SetActive(true);
+            networkManager.ConnectToServer();
+            networkManager.OnJoinedLobby();
         }
     }
     public void GotoSignupPanel()

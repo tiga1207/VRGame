@@ -8,7 +8,25 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
+        MakePlayerSpawn();
+    }
+
+    // public override void OnJoinedLobby()
+    // {
+    //     base.OnJoinedLobby();
+    //     MakePlayerSpawn();
+
+    // }
+    // public override void OnLeftLobby()
+    // {
+    //     base.OnLeftLobby();
+    //     PhotonNetwork.Destroy(spawnedPlayerPrefab);
+    // }
+
+    public void MakePlayerSpawn()
+    {
         spawnedPlayerPrefab=PhotonNetwork.Instantiate("Network Player",transform.position,transform.rotation);
+
     }
 
     public override void OnLeftRoom()
