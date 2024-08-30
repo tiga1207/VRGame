@@ -33,8 +33,8 @@ public class LoginManager : MonoBehaviour
         {
             LoginPanel.SetActive(false);
             MainGamePanel.SetActive(true);
-            networkManager.ConnectToServer();
-            networkManager.OnJoinedLobby();
+            //networkManager.ConnectToServer();
+            //networkManager.OnJoinedLobby();
         }
     }
     public void GotoSignupPanel()

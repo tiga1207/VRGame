@@ -14,23 +14,23 @@ public class DefaultRoom
 }
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
-    public static NetworkManager Instance;
+    //public static NetworkManager Instance;
     public List<DefaultRoom> defaultRooms;
 
-    // public GameObject roomUI;
+    public GameObject roomUI;
 
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    }
+    //void Awake()
+    //{
+    //    if (Instance == null)
+    //    {
+    //        Instance = this;
+    //        DontDestroyOnLoad(this.gameObject);
+    //    }
+    //    else
+    //    {
+    //        Destroy(this.gameObject);
+    //    }
+    //}
 
     public void ConnectToServer()
     {
@@ -47,7 +47,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         base.OnJoinedLobby();
-        // roomUI.SetActive(true);
+        roomUI.SetActive(true);
     } 
 
     public void InitiliazeRoom(int defaultRoomInnex) //방(네트워크) 설정

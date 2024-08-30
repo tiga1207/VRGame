@@ -20,7 +20,7 @@ public class RoomManager : MonoBehaviour
         {
         for (int i = 0; i < roomButtons.Count; i++)
         {
-            int index = i+1;  // 각 버튼이 고유의 인덱스를 유지하도록 설정
+            int index = i;  // 각 버튼이 고유의 인덱스를 유지하도록 설정
             roomButtons[i].onClick.AddListener(() => networkManager.InitiliazeRoom(index));
         }
         }

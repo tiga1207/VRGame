@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
+using UnityEngine.SceneManagement;
 public class MainGamePanelManager : MonoBehaviour
 {
 
@@ -65,8 +66,9 @@ public class MainGamePanelManager : MonoBehaviour
     public void MultiPlay()
     {
         mainGamePanel.SetActive(false);
+        //networkManager.InitiliazeRoom(0);
+        SceneManager.LoadScene("Lobby");
         // oneCamera.SetActive(false);        
-        networkManager.InitiliazeRoom(0);
         // PhotonNetwork.LoadLevel(0);
         // XrOrign.SetActive(true);
 
